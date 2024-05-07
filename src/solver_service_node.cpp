@@ -5,7 +5,7 @@
 
 extern "C"
 {
-    SOLVER_EXT_FUNC ext_func = &my_solver_adtool2forces;
+    SOLVER_EXT_FUNC ext_func = &pointRobotFORCESNLPsolver_fixed_adtool2forces;
 }
 
 // Solver
@@ -58,9 +58,9 @@ void Solver::SolveServiceCallback(
     size_t j = 0;
     size_t num_var = sizeof(forces_output_.x01) / sizeof(*forces_output_.x01);
     
-    RCLCPP_INFO(logger, "number var: %d",num_var);
+    RCLCPP_INFO(logger, "number var: %zu",num_var);
 
-    response->output.data.resize((num_var*10));
+    response->output.data.resize((num_var*20));
     for (size_t i = 0; i < num_var; i++){
         response->output.data[j] = forces_output_.x01[i];
         j += 1;
@@ -99,6 +99,56 @@ void Solver::SolveServiceCallback(
     }
     for (size_t i = 0; i < num_var; i++){
         response->output.data[j] = forces_output_.x10[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x11[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x12[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x13[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x14[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x15[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x16[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x17[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x18[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x19[i];
+        j += 1;
+    }
+
+        for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x20[i];
         j += 1;
     }
 

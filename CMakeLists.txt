@@ -18,7 +18,7 @@ if(OPENMP_FOUND)
   message(WARNING "Compiling with OPENMP")
 endif()
 
-set(SOlVER_TO_USE "my_solver")
+set(SOlVER_TO_USE "pointRobotFORCESNLPsolver_fixed")
 
 ## DEPENDENCIES ##
 set(DEPENDENCIES
@@ -81,6 +81,11 @@ install(DIRECTORY solver/${SOlVER_TO_USE}/include/
 
 install(DIRECTORY launch
   DESTINATION share/${PROJECT_NAME})
+
+install(
+  DIRECTORY solver/${SOlVER_TO_USE}/lib/
+  DESTINATION lib/${PROJECT_NAME}
+)
 
 ## FINALIZE
 ament_export_include_directories(include/${PROJECT_NAME})
