@@ -60,7 +60,7 @@ void Solver::SolveServiceCallback(
     
     RCLCPP_INFO(logger, "number var: %zu",num_var);
 
-    response->output.data.resize((num_var*20));
+    response->output.data.resize((num_var*22));
     for (size_t i = 0; i < num_var; i++){
         response->output.data[j] = forces_output_.x01[i];
         j += 1;
@@ -149,6 +149,16 @@ void Solver::SolveServiceCallback(
 
         for (size_t i = 0; i < num_var; i++){
         response->output.data[j] = forces_output_.x20[i];
+        j += 1;
+    }
+
+    for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x21[i];
+        j += 1;
+    }
+
+    for (size_t i = 0; i < num_var; i++){
+        response->output.data[j] = forces_output_.x22[i];
         j += 1;
     }
 
